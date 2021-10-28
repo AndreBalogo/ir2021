@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+public class xxxxx {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		// R$ 1903,98 = 0% dedução IRPF R$ 
+		// R$ 1903,99 / R$ 2826,65 = 7,5% dedução IRPF R$ 142,80
+		// R$ 2826,66 / R$ 3751,05 = 15% dedução IRPF R$ 354,80
+		// R$ 3751,06 / R$ 4664,68 = 22,5% dedução IRPF R$ 636,13
+		// R$ 4664,69 + = 27,5%  dedução IRPF R$ 869,36
+		
+		double sal, ipagar, difded, ipct, a, b, c, d, ia, ib, ic, id, deda, dedb, dedc, dedd;
+
+		// Entry point
+		
+		a = 1903.99;
+		b = 2826.66;
+		c = 3751.06;
+		d = 4664.69;
+		
+		ia = 0.075;
+		ib = 0.15;
+		ic = 0.225;
+		id = 0.275;
+		
+		deda = 142.80;
+		dedb = 354.80;
+		dedc = 636.13;
+		dedd = 869.36;
+			
+		System.out.println("Por favor, insira seu salário: ");
+		sal = sc.nextDouble();
+		
+		// Logics
+		if (sal >= a && sal < b) {
+			ipagar = sal * ia;
+			difded = ipagar - deda;
+			ipct = ia * 100;
+			System.out.printf("O Imposto a pagar é de R$ %.2f.%n", ipagar);
+			System.out.printf("A parcela a deduzir de IRPF é de R$ %.2f.%n", deda);
+			System.out.printf("A diferença a declarar é de R$ %.2f.%n", difded);
+			System.out.println("A alíquota de IR é: " + ipct + "%");
+		}
+		else if (sal >= b && sal < c) {
+			ipagar = sal * ib;
+			difded = ipagar - dedb;
+			ipct = ib * 100;
+			System.out.printf("O Imposto a pagar é de R$ %.2f%n", ipagar);
+			System.out.printf("A parcela a deduzir de IRPF é de R$ %.2f.%n", dedb);
+			System.out.printf("A diferença a declarar é de R$ %.2f%n", difded);
+			System.out.println("A alíquota de IR é: " + ipct + "%");		
+		}
+		else if (sal >= c && sal < d) {
+			ipagar = sal * ic;
+			difded = ipagar - dedc;
+			ipct = ic * 100;
+			System.out.printf("O Imposto a pagar é de R$ %.2f%n", ipagar);
+			System.out.printf("A parcela a deduzir de IRPF é de R$ %.2f.%n", dedc);
+			System.out.printf("A diferença a declarar é de R$ %.2f%n", difded);
+			System.out.println("A alíquota de IR é: " + ipct + "%");	
+		}
+		else if (sal >= d) {
+			ipagar = sal * id;
+			difded = ipagar - dedd;
+			ipct = id * 100;
+			System.out.printf("O Imposto a pagar é de R$ %.2f%n", ipagar);
+			System.out.printf("A parcela a deduzir de IRPF é de R$ %.2f.%n", dedd);
+			System.out.printf("A diferença a declarar é de R$ %.2f.%n", difded);
+			System.out.println("A alíquota de IR é: " + ipct + "%");
+		}
+		else 
+			System.out.println("Seu salário é isento de IR.");
+		sc.close();
+	}
+
+}
